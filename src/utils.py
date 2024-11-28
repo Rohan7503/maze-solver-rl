@@ -24,7 +24,8 @@ def visualize_graph(A: list, show_weights: bool = True, filename: str = "graph")
         for j in range(num_nodes):
             if A[i][j] != 0:
                 if show_weights:
-                    dot.edge(str(i), str(j), label=str(A[i][j]))
+                    if A[i][j] == max(A[i]):
+                        dot.edge(str(i), str(j), color='red')
                 else:
                     dot.edge(str(i), str(j))
 
