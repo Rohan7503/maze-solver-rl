@@ -4,4 +4,4 @@
 MAX_REWARD = 100
 
 # Number of nodes in the graph
-NUM_NODES = 6
+NUM_NODES = 8
