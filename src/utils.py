@@ -1,3 +1,4 @@
+import os
 from graphviz import Digraph
 
 def visualize_graph(A: list, show_weights: bool = True, filename: str = "graph") -> None:
@@ -29,6 +30,15 @@ def visualize_graph(A: list, show_weights: bool = True, filename: str = "graph")
                 else:
                     dot.edge(str(i), str(j))
 
-    # Save the graph as a PNG image in "../images" directory
-    dot.render(filename=f"../images/{filename}", cleanup=True)
+    # Get the path of the current script (maze_solver_rl directory)
+    current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # Define the path to the images folder
+    images_folder = os.path.join(current_dir, "images")
+
+    # Ensure the images folder exists
+    os.makedirs(images_folder, exist_ok=True)
+
+    # Render the graph and save it in the images folder
+    dot.render(filename=os.path.join(images_folder, filename), cleanup=True)
 
